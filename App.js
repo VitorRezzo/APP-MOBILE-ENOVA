@@ -7,7 +7,7 @@ import { LogBox } from 'react-native';
 
 export default function App() {
   
-//função ignorar boxlogs amarelos
+//função ignorar boxlogs do Animated
 useEffect(() => {
     LogBox.ignoreLogs(['Animated: `useNativeDriver`']);
 }, [])
