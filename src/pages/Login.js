@@ -2,6 +2,7 @@ import { StatusBar } from "expo-status-bar";
 import React, { useState, useEffect } from "react";
 import StyleLogin from '../style/LoginStyle';
 
+
 import {
   Text,
   View,
@@ -14,7 +15,8 @@ import {
 } from "react-native";
 
 
-export default function Login() 
+
+export default function Login({navigation})  
 {
   
   //VARIAVES DE ESTADOS PARA CONTROLE DOS EVENTOS DE EFEITOS 
@@ -22,7 +24,9 @@ export default function Login()
   const [effectopacity] = useState(new Animated.Value(0));
   const [effectlogo] = useState(new Animated.ValueXY({ x: 206, y: 116 }));
   
-  
+  //const navigation = useNavigation();
+
+
   const [user,Setuser] = useState('');
   const [password,Setpassword] = useState('');
   
@@ -100,6 +104,26 @@ export default function Login()
   }
 
 
+
+///METODO VERIFICAÇÃO LOGIN
+
+function Logar(){
+  
+  var userpass = password;
+  
+  var username = user;
+
+  if(username === 'vitor' && userpass === '123'){
+      
+    navigation.navigate('Home')
+  }
+  else
+  {
+    alert('senha ou usuario incorreto!')
+  }
+}
+
+
   return (
   
     <SafeAreaView style={StyleLogin.container}>
@@ -143,7 +167,7 @@ export default function Login()
         placeholder={"Senha"}
          />
         
-        <TouchableOpacity style={StyleLogin.bnt}  >
+        <TouchableOpacity style={StyleLogin.bnt} onPress={ () => Logar()}>
           <Text style={StyleLogin.textBnt} >ACESSAR</Text>
         </TouchableOpacity>
         
