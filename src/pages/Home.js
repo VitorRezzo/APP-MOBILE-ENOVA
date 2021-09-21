@@ -1,4 +1,5 @@
 import React from 'react';
+import authentication from'../config/fireauthentic';
 import 
 {View,
 Text,
@@ -34,7 +35,15 @@ return(
       </View>
      
     <View >
-          <TouchableOpacity style={styles.bntExit} onPress={()=> navigation.goBack('Login')}>
+          <TouchableOpacity style={styles.bntExit} onPress={() => 
+          {
+          authentication.firesignout()
+          
+          navigation.goBack('Login')
+
+          }}
+          
+          >
             <Icon 
                 name="logout"
             />
@@ -62,8 +71,7 @@ const styles = StyleSheet.create({
     margin:40,
   },
     touchBnt:{
-     backgroundColor:'#E8E8DB',
-        //backgroundColor:'#A8C0CE',
+     backgroundColor:'#A8C0CE',0
         marginTop:'10%',
         justifyContent: "center",
         alignItems: "center",

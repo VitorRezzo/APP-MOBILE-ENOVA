@@ -1,8 +1,8 @@
 import { StatusBar } from "expo-status-bar";
 import React, { useState, useEffect } from "react";
 import StyleLogin from '../style/LoginStyle';
-
-
+import FirebaseDatabase from '../config/firebase';
+import authentication from'../config/fireauthentic';
 import {
   Text,
   View,
@@ -24,7 +24,7 @@ export default function Login({navigation})
   const [effectopacity] = useState(new Animated.Value(0));
   const [effectlogo] = useState(new Animated.ValueXY({ x: 206, y: 116 }));
   
-  //const navigation = useNavigation();
+ 
 
 
   const [user,Setuser] = useState('');
@@ -33,7 +33,11 @@ export default function Login({navigation})
   //METODO PARA CRIAR EFEITOS COM ANIMATED
   
   useEffect(() => {
+
+    const firebase = FirebaseDatabase;
     //METODO CRIAR EVENTO TECLADO QUANDO ACIONA OU NÃO
+    authentication.firestate(user,navigation);
+   
     keyboardDidShowListener = Keyboard.addListener(
       "keyboardDidShow",
       keyboardDidShow
@@ -109,17 +113,12 @@ export default function Login({navigation})
 
 function Logar(){
   
-  var userpass = password;
-  
-  var username = user;
-
-  if(username === 'vitor' && userpass === '123'){
-      
-    navigation.navigate('Home')
+  if(user != '' && password != ''){
+     authentication.fireauth(user,password,navigation)
   }
   else
   {
-    alert('senha ou usuario incorreto!')
+    alert('preencha os campos!')
   }
 }
 
