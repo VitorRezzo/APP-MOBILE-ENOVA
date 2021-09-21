@@ -1,5 +1,5 @@
 import React from 'react';
-import authentication from'../config/fireauthentic';
+import authentication from'../config/Fireauthentic';
 import 
 {View,
 Text,
@@ -71,7 +71,7 @@ const styles = StyleSheet.create({
     margin:40,
   },
     touchBnt:{
-     backgroundColor:'#A8C0CE',0
+     backgroundColor:'#A8C0CE',
         marginTop:'10%',
         justifyContent: "center",
         alignItems: "center",

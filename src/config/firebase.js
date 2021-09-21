@@ -2,7 +2,7 @@ import firebase from "firebase"
 import "firebase/storage";
 
 
-
+//dados config do DB 
 const firebaseConfig = {
   apiKey: "",
   authDomain: "",

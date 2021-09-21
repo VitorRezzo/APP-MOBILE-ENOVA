@@ -1,8 +1,8 @@
 import { StatusBar } from "expo-status-bar";
 import React, { useState, useEffect } from "react";
 import StyleLogin from '../style/LoginStyle';
-import FirebaseDatabase from '../config/firebase';
-import authentication from'../config/fireauthentic';
+import FirebaseDatabase from '../config/Firebase';
+import authentication from'../config/Fireauthentic';
 import {
   Text,
   View,

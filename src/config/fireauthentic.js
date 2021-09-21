@@ -1,7 +1,7 @@
 import firebase from "firebase";
 
 
-
+//função logar usuario com email e senha 
 function fireauth(email, password,navigation) {
   
   firebase.auth().signInWithEmailAndPassword(email, password)
@@ -20,7 +20,7 @@ function fireauth(email, password,navigation) {
   });
 }
 
-
+//verificar o estado de login
 function firestate(user,navigation) {
 
 firebase.auth().onAuthStateChanged((user) => {
@@ -33,7 +33,7 @@ firebase.auth().onAuthStateChanged((user) => {
 
 }
 
-
+//função fazer logout usuario
 function firesignout()
 {
 firebase.auth().signOut().then(() => {
