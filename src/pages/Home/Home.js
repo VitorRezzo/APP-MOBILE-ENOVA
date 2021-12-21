@@ -1,6 +1,7 @@
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import ListSuporte from "../Form/FormSuporte/ListSuporte";
+import ListInstalacao from "../Form/FormInstalacao/ListInstalacao";
 import { StyleSheet, Animated } from "react-native";
 
 const Tab = createBottomTabNavigator();
@@ -20,7 +21,7 @@ export default function Home() {
       <Tab.Screen
         name="Instalação"
         size={50}
-        component={ListSuporte}
+        component={ListInstalacao}
         options={{
           headerShown: false,
         }}

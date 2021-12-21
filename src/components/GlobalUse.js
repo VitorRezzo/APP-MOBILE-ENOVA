@@ -46,7 +46,6 @@ export function GlobalUseProvider({ children }) {
     firebaseBD.auth().onAuthStateChanged((user) => {
       if (user) {
         GetNomeUser(user.uid);
-        navigation.navigate("Home");
       }
     });
   }

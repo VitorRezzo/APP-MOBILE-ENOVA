@@ -18,8 +18,8 @@ export default function ListSuporte({ navigation }) {
   const DadosSuporte = () => {
     firestore
       .collection("Servicos")
-      .where("Atividade", "==", "Suporte")
       .where("Responsavel", "==", userLog)
+      .where("Atividade", "==", "Suporte")
       .onSnapshot((query) => {
         query.forEach((doc) => {
           setForms(

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Icon from "react-native-vector-icons/FontAwesome";
-import { firestore } from "../../../config/firebaseBD";
+import firebaseBD, { firestore } from "../../../config/firebaseBD";
 import { useGlobalUse } from "../../../components/GlobalUse";
 import {
   StyleSheet,
@@ -11,24 +11,25 @@ import {
   FlatList,
 } from "react-native";
 
-export default function ListInstacao({ navigation }) {
+export default function ListInstalacao({ navigation }) {
   const [forms, setForms] = useState([]);
-  const { userLog } = useGlobalUse();
-  var CONTADOR_LIST = 0;
+
+  const { userLog, userUid } = useGlobalUse();
+
   const ListSuporte = () => {
     firestore
       .collection("Servicos")
-      .where("Atividade", "==", "Suporte")
       .where("Responsavel", "==", userLog)
+      .where("Atividade", "==", "Instalacao")
       .onSnapshot((query) => {
         query.forEach((doc) => {
           setForms(
             query.docs.map((doc) => ({
               data: doc.data().DataAgenda,
-              os: doc.data().OS,
               pt: doc.data().PT,
+              inversor: doc.data().Inversor,
+              paineis: doc.data().Paineis,
               instrucoes: doc.data().Instrucoes,
-              problemas: doc.data().Problemas,
               cliente: doc.data().Cliente,
               endereco: doc.data().Endereco,
               localizacao: doc.data().Localizacao,
@@ -55,7 +56,8 @@ export default function ListInstacao({ navigation }) {
                   data: item.data,
                   pt: item.pt,
                   instrucoes: item.instrucoes,
-                  problemas: item.problemas,
+                  inversor: item.inversor,
+                  paineis: item.paineis,
                   cliente: item.cliente,
                   endereco: item.endereco,
                   localizacao: item.localizacao,
@@ -63,7 +65,7 @@ export default function ListInstacao({ navigation }) {
               }
             >
               <Icon name="file" size={35} style={{ marginLeft: 10 }} />
-              <Text style={styles.text}>OS-{item.os}</Text>
+              <Text style={styles.text}>PT-{item.pt}</Text>
             </TouchableOpacity>
           );
         }}
